@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  background-color: rgb(223, 223, 223);
+}
+
+.SeccionMain {
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+  margin: 0;
+}
+
+.MenuLateral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  height: 100%;
+  margin: 0;
+  background-color: rgb(255, 255, 255);
+}
+
+.TituloMenu {
+  font-family: 'Inter', sans-serif;
+  margin-top: 50px;
+  font-size: 3rem;
+  color: rgb(16, 122, 16);
+}
+
+.TituloNotas {
+  margin-right: 150px;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.ListaNotas {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-right: 135px;
+  list-style-type: none;
+}
+
+.ListaNotas li {
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.ContenedorSuperior {
+  display: flex;
+  margin-top: 50px;
+  margin-left: 50px;
+  gap: 20px;
+}
+
+.InputBuscar {
+  font-size: 1.1rem;
+  border: 1px solid #000;
+  border-radius: 15px;
+  width: 800px;
+  height: 50px;
+  padding-left: 20px;
+}
+
+.BtnAgregar {
+  color: #ffff;
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
+  border: 1px solid rgb(117, 175, 117);
+  border-radius: 10px;
+  background-color: rgb(117, 175, 117);
+}
