@@ -10,7 +10,10 @@ function App() {
   return (
     <section class="SeccionMain">
       <div class="MenuLateral">
-        <span class="TituloMenu">Mind Root</span>
+        <div class="ContenedorTituloMenu">
+          <img class="IconoMenu" src="src/assets/IconoMindRoot.png"></img>
+          <span class="TituloMenu">Mind Root</span>
+        </div>
 
         <span class="TituloNotas">Notas</span>
 

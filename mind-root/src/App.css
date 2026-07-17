@@ -20,15 +20,27 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
+.ContenedorTituloMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 50px;
+  gap: 10px;
+}
+
+.IconoMenu {
+  width: 50px;
+  height: 60px;
+}
+
 .TituloMenu {
   font-family: 'Inter', sans-serif;
-  margin-top: 50px;
   font-size: 3rem;
   color: rgb(16, 122, 16);
 }
 
 .TituloNotas {
-  margin-right: 150px;
+  margin-right: 200px;
   margin-top: 50px;
   font-weight: bold;
   font-size: 1.4rem;
@@ -38,7 +50,7 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 20px;
-  margin-right: 135px;
+  margin-right: 180px;
   list-style-type: none;
 }
 
@@ -70,5 +82,5 @@ body {
   font-size: 40px;
   border: 1px solid rgb(117, 175, 117);
   border-radius: 10px;
-  background-color: rgb(117, 175, 117);
+  background-color: rgb(16, 122, 16);
 }
