@@ -16,6 +16,7 @@ function App() {
 
   const [categoriaActiva, setCategoriaActiva] = useState("recordatorios");
   const [textoInput, setTextoInput] = useState('')
+  const [mostrarVentana, setMostrarVentana] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('notasMindRoot', JSON.stringify(notas))
@@ -73,6 +74,17 @@ function App() {
           <button className="BtnAgregar" onClick={agregarNota}>+</button>
         </div>
 
+        {mostrarVentana && (
+          <div className='VentanaModificar'>
+            <input className='InputModificar'></input>
+            <div className='ContenedorBtnsVentana'>
+              <button onClick={() => setMostrarVentana(false)} className='BtnCerrar'>Cerrar</button>
+              <button className='BtnModificarVentana'>Modificar</button>
+            </div>
+
+          </div>
+        )}
+
         <div className="ContenedorNotas">
           {notasFiltradas.length === 0 ? (
             <p className="MensajeVacio">No hay notas en {categorias[categoriaActiva].nombre} todavía</p>
@@ -81,6 +93,9 @@ function App() {
               <div key={nota.id} className="TarjetaNota">
                 <div className='SuperiorTarjeta'>
                   <p className="ContenidoNota">{nota.contenido}</p>
+                  <button className='BtnModificar' onClick={() => setMostrarVentana(true)}>
+                    <img src='src/assets/editar.png' className='IconoTarjeta'></img>
+                  </button>
                   <button className='BtnEliminar' onClick={() => eliminarNota(nota.id)}><img src='src/assets/basura.png'></img></button>
                 </div>
                 <span className="FechaNota">{nota.fecha}</span>

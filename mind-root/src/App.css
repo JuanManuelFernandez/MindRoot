@@ -146,6 +146,21 @@ body {
   content: url('src/assets/basuraHover.png');
 } 
 
+.BtnModificar {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.BtnModificar :hover {
+  content: url('src/assets/editarHover.png');
+}
+
+.IconoTarjeta {
+  height: 20px;
+  width: 20px;
+}
+
 .FechaNota {
   font-size: 0.8rem;
   color: rgb(140, 140, 140);
@@ -157,4 +172,45 @@ body {
   margin-left: 50px;
   color: rgb(140, 140, 140);
   font-style: italic;
+}
+
+/*Ventana Modificar*/
+
+.VentanaModificar {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.InputModificar {
+  border: 1px solid #57575794;
+  border-radius: 5px;
+  height: 200px;
+}
+
+.ContenedorBtnsVentana {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.BtnCerrar {
+  width: 70px;
+  height: 30px;
+}
+
+.BtnModificarVentana {
+  width: 70px;
+  height: 30px;
 }
