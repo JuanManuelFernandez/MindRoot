@@ -1,4 +1,4 @@
-Mind Root es un proyecto diseñado para ayudarte a organizar tus recordatorios de manera simple. Su interfaz minimalista combina un menú lateral con categorías como Ideas, Tareas Diarias, Proyectos y Recordatorios, permitiendo que cada nota esté siempre al alcance de un clic.
+Mind Root es un proyecto diseñado para ayudarte a organizar tus recordatorios de manera simple. Su interfaz minimalista combina un menú lateral con categorías como Ideas, Tareas Diarias, Proyectos y Recordatorios, permitiendo que cada nota esté siempre al alcance de un click.
 
 La misma incluye:
 
