@@ -43,68 +43,69 @@ function App() {
   const notasFiltradas = notas.filter(nota => nota.categoria === categoriaActiva)
 
   return (
-    <section className="SeccionMain">
-      <div className="MenuLateral">
-        <div className="ContenedorTituloMenu">
-          <img className="IconoMenu" src="src/assets/IconoMindRoot.png" />
-          <span className="TituloMenu">Mind Root</span>
-        </div>
-
-        <span className="TituloNotas">Notas</span>
-
-        <ul className="ListaNotas">
-          {Object.entries(categorias).map(([clave, {nombre, icono}]) => (
-            <li key={clave} className="ItemLista" onClick={() => setCategoriaActiva(clave)}>
-              <img src={icono} className='IconoLista'></img>
-              {nombre}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="Central">
-        <div className="ContenedorSuperior">
-          <input
-            className="InputBuscar"
-            placeholder={`Nueva nota en ${categorias[categoriaActiva].nombre}...`}
-            value={textoInput}
-            onChange={(e) => setTextoInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && agregarNota()}
-          />
-          <button className="BtnAgregar" onClick={agregarNota}>+</button>
-        </div>
-
-        {mostrarVentana && (
-          <div className='VentanaModificar'>
-            <input className='InputModificar'></input>
-            <div className='ContenedorBtnsVentana'>
-              <button onClick={() => setMostrarVentana(false)} className='BtnCerrar'>Cerrar</button>
-              <button className='BtnModificarVentana'>Modificar</button>
-            </div>
-
+    <>
+      <section className={`SeccionMain ${mostrarVentana ? 'Blureado' : ''}`}>
+        <div className="MenuLateral">
+          <div className="ContenedorTituloMenu">
+            <img className="IconoMenu" src="src/assets/IconoMindRoot.png" />
+            <span className="TituloMenu">Mind Root</span>
           </div>
-        )}
 
-        <div className="ContenedorNotas">
-          {notasFiltradas.length === 0 ? (
-            <p className="MensajeVacio">No hay notas en {categorias[categoriaActiva].nombre} todavía</p>
-          ) : (
-            notasFiltradas.map(nota => (
-              <div key={nota.id} className="TarjetaNota">
-                <div className='SuperiorTarjeta'>
-                  <p className="ContenidoNota">{nota.contenido}</p>
-                  <button className='BtnModificar' onClick={() => setMostrarVentana(true)}>
-                    <img src='src/assets/editar.png' className='IconoTarjeta'></img>
-                  </button>
-                  <button className='BtnEliminar' onClick={() => eliminarNota(nota.id)}><img src='src/assets/basura.png'></img></button>
-                </div>
-                <span className="FechaNota">{nota.fecha}</span>
-              </div>
-            ))
-          )}
+          <span className="TituloNotas">Notas</span>
+
+          <ul className="ListaNotas">
+            {Object.entries(categorias).map(([clave, {nombre, icono}]) => (
+              <li key={clave} className="ItemLista" onClick={() => setCategoriaActiva(clave)}>
+                <img src={icono} className='IconoLista'></img>
+                {nombre}
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-    </section>
+
+        <div className="Central">
+          <div className="ContenedorSuperior">
+            <input
+              className="InputBuscar"
+              placeholder={`Nueva nota en ${categorias[categoriaActiva].nombre}...`}
+              value={textoInput}
+              onChange={(e) => setTextoInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && agregarNota()}
+            />
+            <button className="BtnAgregar" onClick={agregarNota}>+</button>
+          </div>
+
+          <div className="ContenedorNotas">
+            {notasFiltradas.length === 0 ? (
+              <p className="MensajeVacio">No hay notas en {categorias[categoriaActiva].nombre} todavía</p>
+            ) : (
+              notasFiltradas.map(nota => (
+                <div key={nota.id} className="TarjetaNota">
+                  <div className='SuperiorTarjeta'>
+                    <p className="ContenidoNota">{nota.contenido}</p>
+                    <button className='BtnModificar' onClick={() => setMostrarVentana(true)}>
+                      <img src='src/assets/editar.png' className='IconoTarjeta'></img>
+                    </button>
+                    <button className='BtnEliminar' onClick={() => eliminarNota(nota.id)}><img src='src/assets/basura.png'></img></button>
+                  </div>
+                  <span className="FechaNota">{nota.fecha}</span>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </section>
+      {mostrarVentana && (
+            <div className='VentanaModificar'>
+              <input className='InputModificar'></input>
+              <div className='ContenedorBtnsVentana'>
+                <button onClick={() => setMostrarVentana(false)} className='BtnCerrar'>Cerrar</button>
+                <button className='BtnModificarVentana'>Modificar</button>
+              </div>
+
+            </div>
+          )}
+    </>
   )
 }
 
