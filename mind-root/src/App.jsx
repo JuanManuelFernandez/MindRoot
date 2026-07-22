@@ -19,6 +19,8 @@ function App() {
   const [mostrarVentana, setMostrarVentana] = useState(false);
   const [textoModificar, setTextoModificar] = useState('');
   const [notaEditando, setNotaEditando] = useState(null);
+  const [menuAbierto, setMenuAbierto] = useState(false);
+
 
   useEffect(() => {
     localStorage.setItem('notasMindRoot', JSON.stringify(notas))
@@ -59,7 +61,12 @@ function App() {
   return (
     <>
       <section className={`SeccionMain ${mostrarVentana ? 'Blureado' : ''}`}>
-        <div className="MenuLateral">
+        <nav className='Navbar' id='navbar'>
+          <button className='BtnMenu' id='btnMenu' onClick={() => setMenuAbierto(!menuAbierto)}>
+            <img src='src/assets/IconoMindRoot.png'></img>
+          </button>
+        </nav>
+        <div className={`MenuLateral ${menuAbierto ? 'MenuLateralActivo' : ''}`}>
           <div className="ContenedorTituloMenu">
             <img className="IconoMenu" src="src/assets/IconoMindRoot.png" />
             <span className="TituloMenu">Mind Root</span>
@@ -69,7 +76,10 @@ function App() {
 
           <ul className="ListaNotas">
             {Object.entries(categorias).map(([clave, {nombre, icono}]) => (
-              <li key={clave} className="ItemLista" onClick={() => setCategoriaActiva(clave)}>
+              <li 
+                key={clave} 
+                className="ItemLista" 
+                onClick={ () => {setCategoriaActiva(clave); setMenuAbierto(false)}}>
                 <img src={icono} className='IconoLista'></img>
                 {nombre}
               </li>
@@ -80,7 +90,7 @@ function App() {
         <div className="Central">
           <div className="ContenedorSuperior">
             <input
-              className="InputBuscar"
+              className="InputAgregar"
               placeholder={`Nueva nota en ${categorias[categoriaActiva].nombre}...`}
               value={textoInput}
               onChange={(e) => setTextoInput(e.target.value)}
@@ -104,7 +114,7 @@ function App() {
                       }}>
                       <img src='src/assets/editar.png' className='IconoTarjeta'></img>
                     </button>
-                    <button className='BtnEliminar' onClick={() => eliminarNota(nota.id)}><img src='src/assets/basura.png'></img></button>
+                    <button className='BtnEliminar' onClick={() => eliminarNota(nota.id)}><img src='src/assets/basura.png' className='IconoEliminar'></img></button>
                   </div>
                   <span className="FechaNota">{nota.fecha}</span>
                 </div>
