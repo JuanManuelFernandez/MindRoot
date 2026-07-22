@@ -88,6 +88,9 @@ function App() {
         </div>
 
         <div className="Central">
+          <div className='ContenedorBanner'>
+            <img src='src/assets/Banner.png' className='Banner'></img>
+          </div>
           <div className="ContenedorSuperior">
             <input
               className="InputAgregar"
