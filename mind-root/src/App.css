@@ -97,7 +97,7 @@ body {
 
 .InputBuscar {
   font-size: 1.1rem;
-  border: 1px solid #064E3B;
+  border: 3px solid #064E3B;
   border-radius: 15px;
   width: 800px;
   height: 50px;
@@ -105,9 +105,9 @@ body {
 }
 
 .BtnAgregar {
-  color: #F8E7C9;
-  width: 50px;
-  height: 50px;
+  color: #FFFF;
+  width: 55px;
+  height: 55px;
   font-size: 40px;
   border: 1px solid rgb(117, 175, 117);
   border-radius: 10px;
@@ -132,10 +132,8 @@ body {
   min-height: 140px;
   padding: 15px;
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(200, 200, 200);
-  border-color: #064E3B;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   border-radius: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .SuperiorTarjeta {
@@ -192,25 +190,27 @@ body {
 /*Ventana Modificar*/
 
 .VentanaModificar {
-  display: fixed;
+  display: flex;
   position: fixed;
+  align-items: center;
   justify-content: space-between;
   flex-direction: column;
   top: 50%;
   left: 50%;
   width: 400px;
-  height: 200px;
+  height: 250px;
   transform: translate(-50%, -50%);
-  border: 3px solid #064E3B;
   border-radius: 10px;
-  padding: 20px;
   background-color: #ffff;
+  box-sizing: border-box;
 }
 
 .InputModificar {
-  border: none;
+  text-align: left;
+  border: 3px solid #064E3B;
   border-radius: 5px;
-  height: 200px;
+  width: 400px;
+  flex: 1;
 }
 
 .ContenedorBtnsVentana {
@@ -218,15 +218,30 @@ body {
   justify-content: center;
   flex-direction: row;
   margin-top: 30px;
-  gap: 20px;
 }
 
 .BtnCerrar {
+  border: none;
+  background: none;
   width: 70px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.BtnCerrar img {
+  width: 30px;
   height: 30px;
 }
 
 .BtnModificarVentana {
+  background: none;
+  border: none;
   width: 70px;
   height: 30px;
+  cursor: pointer;
+}
+
+.BtnModificarVentana img {
+  width: 28px;
+  height: 28px;
 }

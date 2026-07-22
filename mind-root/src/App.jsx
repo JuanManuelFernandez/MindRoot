@@ -17,6 +17,8 @@ function App() {
   const [categoriaActiva, setCategoriaActiva] = useState("recordatorios");
   const [textoInput, setTextoInput] = useState('')
   const [mostrarVentana, setMostrarVentana] = useState(false);
+  const [textoModificar, setTextoModificar] = useState('');
+  const [notaEditando, setNotaEditando] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('notasMindRoot', JSON.stringify(notas))
@@ -34,6 +36,18 @@ function App() {
 
     setNotas([...notas, nuevaNota])
     setTextoInput('')
+  }
+
+  const modificarNota = () => {
+    if(textoModificar.trim() == ''){
+      return;
+    }
+    else{
+      setNotas(notas.map(nota => nota.id === notaEditando
+        ? {...nota, contenido: textoModificar.trim() } : nota
+      ))
+    }
+    setMostrarVentana(false);
   }
 
   const eliminarNota = (id) => {
@@ -83,7 +97,11 @@ function App() {
                 <div key={nota.id} className="TarjetaNota">
                   <div className='SuperiorTarjeta'>
                     <p className="ContenidoNota">{nota.contenido}</p>
-                    <button className='BtnModificar' onClick={() => setMostrarVentana(true)}>
+                    <button className='BtnModificar' onClick={() => {
+                        setNotaEditando(nota.id);
+                        setTextoModificar(nota.contenido);
+                        setMostrarVentana(true);
+                      }}>
                       <img src='src/assets/editar.png' className='IconoTarjeta'></img>
                     </button>
                     <button className='BtnEliminar' onClick={() => eliminarNota(nota.id)}><img src='src/assets/basura.png'></img></button>
@@ -97,12 +115,15 @@ function App() {
       </section>
       {mostrarVentana && (
             <div className='VentanaModificar'>
-              <input className='InputModificar'></input>
+              <textarea className='InputModificar' value={textoModificar} onChange={(e) => setTextoModificar(e.target.value)}></textarea>
               <div className='ContenedorBtnsVentana'>
-                <button onClick={() => setMostrarVentana(false)} className='BtnCerrar'>Cerrar</button>
-                <button className='BtnModificarVentana'>Modificar</button>
+                <button onClick={() => setMostrarVentana(false)} className='BtnCerrar'>
+                  <img src='src/assets/Close.png'></img>
+                </button>
+                <button className='BtnModificarVentana' onClick={modificarNota}>
+                  <img src='src/assets/Check.png'></img>
+                </button>
               </div>
-
             </div>
           )}
     </>
